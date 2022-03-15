@@ -11,6 +11,27 @@ app.get('/', function (req, res) {
     res.sendFile(process.cwd() + '/views/index.html');
 });
 
+//incluídos para implantar o código
+const multer  = require('multer')
+
+//////////////////
+//inicio do código
+app.post("/api/fileanalyse", multer().single("upfile") , (req, res) =>{
+console.log(req.file)
+let resObj = {}
+resObj["name"] = req.file.originalname,
+resObj["type"] = req.file.mimetype,
+resObj["size"] = req.file.size
+  
+  res.json
+    (
+      resObj
+    )
+})
+
+
+
+
 
 
 
